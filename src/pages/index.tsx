@@ -1,4 +1,6 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+// import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
@@ -16,7 +18,18 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <ConnectButton />
+        
+        <WalletButton.Custom wallet="metamask">
+          {({ ready, connect }) => (
+            <button
+              type="button"
+              disabled={!ready}
+              onClick={connect}
+            >
+              Connect with MetaMask
+            </button>
+          )}
+        </WalletButton.Custom>
 
         <h1 className={styles.title}>
           Welcome to <a href="https://www.rainbowkit.com">RainbowKit</a> +{' '}

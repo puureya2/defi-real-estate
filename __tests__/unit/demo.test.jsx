@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
-// ✅ mock RainbowKit
-jest.mock('@rainbow-me/rainbowkit', () => ({
-  ConnectButton: () => <div>Mock Connect Button</div>,
-}));
+// // ✅ mock RainbowKit
+// jest.mock('@rainbow-me/rainbowkit', () => ({
+//   ConnectButton: () => <div>Mock Connect Button</div>,
+// }));
 
 import Home from '../../src/pages/index';
 
