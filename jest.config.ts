@@ -14,8 +14,7 @@ const createJestConfig = nextJest({
 const customJestConfig  = {
 
   testMatch: [
-    '**/__tests__/unit/**/*.{js,jsx,ts,tsx}',
-    '**/__tests__/unit/**/*.(test|spec).{js,jsx,ts,tsx}',
+    '**/__tests__/unit/**/*.(test|spec).{js,jsx,ts,tsx}'
   ],
 
   testPathIgnorePatterns: [
