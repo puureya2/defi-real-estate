@@ -42,42 +42,42 @@ jobs:
           path: __tests__/unit/coverage/lcov-report/index.html
 
 
-  # e2e-tests:
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 15
+  e2e-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
 
-  #   steps:
-  #     - name: 📥 Checkout code
-  #       uses: actions/checkout@v4
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
 
-  #     - name: 🧰 Set up Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 18
+      - name: 🧰 Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-  #     - name: 📦 Install dependencies
-  #       run: npm ci
+      - name: 📦 Install dependencies
+        run: npm ci
 
-  #     - name: 🧪 Install Playwright browsers
-  #       run: npx playwright install --with-deps
+      - name: 🧪 Install Playwright browsers
+        run: npx playwright install --with-deps
 
-  #     - name: ✅ Run Playwright E2E tests
-  #       run: npm run test:e2e
-  #       env:
-  #         # 👉 Add your environment secrets at: https://github.com/your-org/your-repo/settings/secrets/actions
-  #         # EXAMPLE:
-  #         # SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-  #         # INFURA_API_KEY: ${{ secrets.INFURA_API_KEY }}
-  #         # PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-  #         NODE_ENV: test
+      - name: ✅ Run Playwright E2E tests
+        run: npm run test:e2e
+        env:
+          # 👉 Add your environment secrets at: https://github.com/your-org/your-repo/settings/secrets/actions
+          # EXAMPLE:
+          # SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          # INFURA_API_KEY: ${{ secrets.INFURA_API_KEY }}
+          # PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          NODE_ENV: test
 
-  #     - name: 📄 Upload Playwright test report
-  #       if: ${{ !cancelled() }}
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: playwright-e2e-report
-  #         path: __tests__/e2e/playwright-reports/index.html
-  #         retention-days: 14
+      - name: 📄 Upload Playwright test report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-e2e-report
+          path: __tests__/e2e/playwright-reports/index.html
+          retention-days: 14
 
-  #     - name: 📄 Open Playwright Coverage Report
-  #       run: test:e2e-report
+      - name: 📄 Open Playwright Coverage Report
+        run: test:e2e-report
