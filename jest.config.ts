@@ -11,7 +11,7 @@ const createJestConfig = nextJest({
   dir: './',
 })
 
-const config: Config = {
+const customJestConfig  = {
 
   testMatch: [
     '**/__tests__/unit/**/*.{js,jsx,ts,tsx}',
@@ -216,4 +216,4 @@ const config: Config = {
   // watchman: true,
 };
 
-export default config;
+export default createJestConfig(customJestConfig);

@@ -68,11 +68,8 @@ jobs:
       - name: 🧪 Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: 🏗️ Build Next.js application
-        run: npm run build
-
-      - name: 🚀 Start Next.js production server
-        run: npm run start &
+      - name: 🚀 Start Next.js dev server
+        run: npm run dev
 
       - name: ⏱️ Wait for server to be ready
         run: npx wait-on http://localhost:3000
