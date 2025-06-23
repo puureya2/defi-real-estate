@@ -25,7 +25,7 @@ jobs:
         run: npm ci
 
       - name: ✅ Run Jest unit tests
-        run: npm run test:unit
+        run: npm run test:unit --coverage
         env:
           # 👉 Add your environment secrets at: https://github.com/your-org/your-repo/settings/secrets/actions
           # EXAMPLE:
@@ -40,6 +40,9 @@ jobs:
         with:
           name: jest-coverage
           path: __tests__/unit/coverage/lcov-report/index.html
+
+      - name: 📄 Open Jest Coverage Report
+        run: test:e2e-report
 
 
   e2e-tests:

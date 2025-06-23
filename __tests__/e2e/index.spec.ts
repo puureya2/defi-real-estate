@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('renders homepage with heading and Connect button', async ({ page }) => {
   await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
 
   // ✅ Expect the main heading to be present
   const heading = page.getByRole('heading', { level: 1 });
