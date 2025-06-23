@@ -18,6 +18,12 @@ const customJestConfig  = {
     '**/__tests__/unit/**/*.(test|spec).{js,jsx,ts,tsx}',
   ],
 
+  testPathIgnorePatterns: [
+    '<rootDir>/__tests__/unit/coverage/',
+    '<rootDir>/__tests__/unit/junit/',
+    '<rootDir>/__tests__/e2e/',
+    '/node_modules/',
+  ],
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,
