@@ -71,9 +71,6 @@ jobs:
       - name: 🚀 Start dev server
         run: npm run dev &
 
-      - name: ⏱️ Wait for server to be ready
-        run: npx wait-on http://localhost:3000
-
       - name: ✅ Run Playwright E2E tests
         run: npm run test:e2e
         env:
