@@ -61,9 +61,6 @@ jobs:
       - name: 🧪 Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: 🚀 Start dev server
-        run: npm run dev &
-
       - name: ✅ Run Playwright E2E tests
         run: npm run test:e2e
         env:
