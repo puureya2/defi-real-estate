@@ -39,14 +39,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: jest-coverage
-          path: __tests__/unit/jest-reports/coverage
+          path: __tests__/unit/coverage
 
       - name: 📄 Upload JUnit Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: jest-junit
-          path: __tests__/unit/jest-reports/junit
+          path: __tests__/unit/junit
 
 
   e2e-tests:
@@ -67,6 +67,15 @@ jobs:
 
       - name: 🧪 Install Playwright browsers
         run: npx playwright install --with-deps
+
+      - name: 🏗️ Build Next.js application
+        run: npm run build
+
+      - name: 🚀 Start Next.js production server
+        run: npm run start &
+
+      - name: ⏱️ Wait for server to be ready
+        run: npx wait-on http://localhost:3000
 
       - name: ✅ Run Playwright E2E tests
         run: npm run test:e2e

@@ -13,7 +13,11 @@ const createJestConfig = nextJest({
 
 const config: Config = {
 
-  testMatch: ['**/__tests__/unit/**/*.(test|spec).{js,jsx,ts,tsx}'],
+  testMatch: [
+    '**/__tests__/unit/**/*.{js,jsx,ts,tsx}',
+    '**/__tests__/unit/**/*.(test|spec).{js,jsx,ts,tsx}',
+  ],
+
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -38,7 +42,7 @@ const config: Config = {
 
   reporters: [
     'default',
-    ['jest-junit', { outputDirectory: '__tests__/unit/jest-reports/junit' }]
+    ['jest-junit', { outputDirectory: '__tests__/unit/junit' }]
   ],
 
   // An array of regexp pattern strings used to skip coverage collection
