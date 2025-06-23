@@ -39,14 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: jest-coverage
-          path: __tests__/unit/coverage
-
-      - name: 📄 Upload JUnit Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: jest-junit
-          path: __tests__/unit/junit
+          path: __tests__/unit/coverage/lcov-report/index.html
 
 
   e2e-tests:
@@ -86,5 +79,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-e2e-report
-          path: __tests__/e2e/playwright-reports
+          path: __tests__/e2e/playwright-reports/index.html
           retention-days: 14
