@@ -1,0 +1,40 @@
+diff --git a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.dev.js b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.dev.js
+index 86ce23d..92cebdb 100644
+--- a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.dev.js
++++ b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.dev.js
+@@ -75,5 +75,13 @@ function createMapValueFn(properties) {
+   });
+ }
+ 
+-exports.createMapValueFn = createMapValueFn;
+-exports.createNormalizeValueFn = createNormalizeValueFn;
++module.exports = {
++  createMapValueFn,
++  createNormalizeValueFn
++};
++
++// For ESM-style named exports (used by Next.js / Playwright)
++exports.default = {
++  createMapValueFn,
++  createNormalizeValueFn
++};
+diff --git a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.prod.js b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.prod.js
+index 86ce23d..92cebdb 100644
+--- a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.prod.js
++++ b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.prod.js
+@@ -75,5 +75,13 @@ function createMapValueFn(properties) {
+   });
+ }
+ 
+-exports.createMapValueFn = createMapValueFn;
+-exports.createNormalizeValueFn = createNormalizeValueFn;
++module.exports = {
++  createMapValueFn,
++  createNormalizeValueFn
++};
++
++// For ESM-style named exports (used by Next.js / Playwright)
++exports.default = {
++  createMapValueFn,
++  createNormalizeValueFn
++};
