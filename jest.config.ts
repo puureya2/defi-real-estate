@@ -13,7 +13,7 @@ const createJestConfig = nextJest({
 
 const config: Config = {
 
-  testMatch: ['**/__tests__/unit/**/*.test.ts?(x)'],
+  testMatch: ['**/__tests__/unit/**/*.(test|spec).{js,jsx,ts,tsx}'],
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test:unit": "jest",
+    "test:unit": "jest --passWithNoTests",
     "test:unit-watch": "jest --watch",
     "test:e2e": "npx playwright test",
     "test:e2e-report": "npx playwright show-report",
