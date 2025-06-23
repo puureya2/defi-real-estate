@@ -31,7 +31,12 @@ const config: Config = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: '__tests__/unit/coverage',
+
+  reporters: [
+    'default',
+    ['jest-junit', { outputDirectory: '__tests__/unit/jest-reports/junit' }]
+  ],
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
