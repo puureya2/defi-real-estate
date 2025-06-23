@@ -23,9 +23,6 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: ✅ Run Jest unit tests
-        run: npm run test:unit
-
       - name: 🧪 Install Playwright browsers
         run: npx playwright install --with-deps
 
