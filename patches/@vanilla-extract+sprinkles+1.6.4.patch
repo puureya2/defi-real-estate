@@ -1,104 +1,93 @@
-diff --git a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.d.ts b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.d.ts
-index 7a7e265..143eb5e 100644
---- a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.d.ts
-+++ b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.d.ts
-@@ -46,7 +46,9 @@ type RequiredConditionalObject<RequiredConditionName extends string, OptionalCon
- type RequiredConditionalValue<SprinklesProperties extends Conditions<string>, Value extends string | number | boolean> = ExtractDefaultCondition<SprinklesProperties> extends false ? never : Value | RequiredConditionalObject<Exclude<ExtractDefaultCondition<SprinklesProperties>, false>, Exclude<ExtractConditionNames<SprinklesProperties>, ExtractDefaultCondition<SprinklesProperties>>, Value> | (SprinklesProperties['conditions']['responsiveArray'] extends {
-     length: number;
- } ? RequiredResponsiveArrayByMaxLength<SprinklesProperties['conditions']['responsiveArray']['length'], Value> : never);
--declare function createNormalizeValueFn<SprinklesProperties extends Conditions<string>>(properties: SprinklesProperties): <Value extends string | number | boolean>(value: ConditionalValue<SprinklesProperties, Value>) => Partial<Record<ExtractConditionNames<SprinklesProperties>, Value>>;
--declare function createMapValueFn<SprinklesProperties extends Conditions<string>>(properties: SprinklesProperties): <OutputValue extends string | number | boolean | null | undefined, Value extends ConditionalValue<SprinklesProperties, string | number | boolean>>(value: Value, fn: (inputValue: ExtractValue<Value>, key: ExtractConditionNames<SprinklesProperties>) => OutputValue) => Value extends string | number | boolean ? OutputValue : Partial<Record<ExtractConditionNames<SprinklesProperties>, OutputValue>>;
-+export declare function createNormalizeValueFn<SprinklesProperties extends Conditions<string>>(properties: SprinklesProperties): <Value extends string | number | boolean>(value: ConditionalValue<SprinklesProperties, Value>) => Partial<Record<ExtractConditionNames<SprinklesProperties>, Value>>;
-+export declare function createMapValueFn<SprinklesProperties extends Conditions<string>>(properties: SprinklesProperties): <OutputValue extends string | number | boolean | null | undefined, Value extends ConditionalValue<SprinklesProperties, string | number | boolean>>(value: Value, fn: (inputValue: ExtractValue<Value>, key: ExtractConditionNames<SprinklesProperties>) => OutputValue) => Value extends string | number | boolean ? OutputValue : Partial<Record<ExtractConditionNames<SprinklesProperties>, OutputValue>>;
- 
--export { type ConditionalValue, type RequiredConditionalValue, createMapValueFn, createNormalizeValueFn };
-+export { type ConditionalValue, type RequiredConditionalValue,
-+    // createMapValueFn, createNormalizeValueFn 
-+};
 diff --git a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.dev.js b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.dev.js
-index 86ce23d..730dc8d 100644
+index 86ce23d..d32185e 100644
 --- a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.dev.js
 +++ b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.dev.js
-@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
- 
- var recipe = require('@vanilla-extract/css/recipe');
- 
--function createNormalizeValueFn(properties) {
-+export function createNormalizeValueFn(properties) {
-   var {
-     conditions
-   } = properties;
-@@ -42,7 +42,7 @@ function createNormalizeValueFn(properties) {
-     }]
-   });
- }
--function createMapValueFn(properties) {
-+export function createMapValueFn(properties) {
-   var {
-     conditions
-   } = properties;
-@@ -75,5 +75,5 @@ function createMapValueFn(properties) {
+@@ -75,5 +75,21 @@ function createMapValueFn(properties) {
    });
  }
  
--exports.createMapValueFn = createMapValueFn;
--exports.createNormalizeValueFn = createNormalizeValueFn;
 +// exports.createMapValueFn = createMapValueFn;
 +// exports.createNormalizeValueFn = createNormalizeValueFn;
++
++// CommonJS exports (already there, keep them)
++module.exports = {
++  createMapValueFn,
++  createNormalizeValueFn,
++};
++
++// 👇 Add these extra ESM-style named exports
+ exports.createMapValueFn = createMapValueFn;
+ exports.createNormalizeValueFn = createNormalizeValueFn;
++
++// 👇 And this for default ESM import support
++exports.default = {
++  createMapValueFn,
++  createNormalizeValueFn,
++};
 diff --git a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.prod.js b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.prod.js
-index 86ce23d..730dc8d 100644
+index 86ce23d..d32185e 100644
 --- a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.prod.js
 +++ b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.prod.js
-@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
- 
- var recipe = require('@vanilla-extract/css/recipe');
- 
--function createNormalizeValueFn(properties) {
-+export function createNormalizeValueFn(properties) {
-   var {
-     conditions
-   } = properties;
-@@ -42,7 +42,7 @@ function createNormalizeValueFn(properties) {
-     }]
-   });
- }
--function createMapValueFn(properties) {
-+export function createMapValueFn(properties) {
-   var {
-     conditions
-   } = properties;
-@@ -75,5 +75,5 @@ function createMapValueFn(properties) {
+@@ -75,5 +75,21 @@ function createMapValueFn(properties) {
    });
  }
  
--exports.createMapValueFn = createMapValueFn;
--exports.createNormalizeValueFn = createNormalizeValueFn;
 +// exports.createMapValueFn = createMapValueFn;
 +// exports.createNormalizeValueFn = createNormalizeValueFn;
++
++// CommonJS exports (already there, keep them)
++module.exports = {
++  createMapValueFn,
++  createNormalizeValueFn,
++};
++
++// 👇 Add these extra ESM-style named exports
+ exports.createMapValueFn = createMapValueFn;
+ exports.createNormalizeValueFn = createNormalizeValueFn;
++
++// 👇 And this for default ESM import support
++exports.default = {
++  createMapValueFn,
++  createNormalizeValueFn,
++};
 diff --git a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.esm.js b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.esm.js
-index 3e88aab..60a18aa 100644
+index 3e88aab..c1ad83a 100644
 --- a/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.esm.js
 +++ b/node_modules/@vanilla-extract/sprinkles/createUtils/dist/vanilla-extract-sprinkles-createUtils.esm.js
-@@ -1,6 +1,6 @@
- import { addRecipe } from '@vanilla-extract/css/recipe';
- 
--function createNormalizeValueFn(properties) {
-+export function createNormalizeValueFn(properties) {
-   var {
-     conditions
-   } = properties;
-@@ -38,7 +38,7 @@ function createNormalizeValueFn(properties) {
-     }]
-   });
- }
--function createMapValueFn(properties) {
-+export function createMapValueFn(properties) {
-   var {
-     conditions
-   } = properties;
-@@ -71,4 +71,4 @@ function createMapValueFn(properties) {
+@@ -71,4 +71,20 @@ function createMapValueFn(properties) {
    });
  }
  
 -export { createMapValueFn, createNormalizeValueFn };
 +// export { createMapValueFn, createNormalizeValueFn };
++
++// CommonJS exports (already there, keep them)
++module.exports = {
++  createMapValueFn,
++  createNormalizeValueFn,
++};
++
++// 👇 Add these extra ESM-style named exports
++exports.createMapValueFn = createMapValueFn;
++exports.createNormalizeValueFn = createNormalizeValueFn;
++
++// 👇 And this for default ESM import support
++exports.default = {
++  createMapValueFn,
++  createNormalizeValueFn,
++};
+diff --git a/node_modules/@vanilla-extract/sprinkles/createUtils/package.json b/node_modules/@vanilla-extract/sprinkles/createUtils/package.json
+index defb54c..44d0b3e 100644
+--- a/node_modules/@vanilla-extract/sprinkles/createUtils/package.json
++++ b/node_modules/@vanilla-extract/sprinkles/createUtils/package.json
+@@ -6,6 +6,10 @@
+       "import": "./dist/vanilla-extract-sprinkles-createUtils.esm.js",
+       "default": "./dist/vanilla-extract-sprinkles-createUtils.cjs.js"
+     },
++    "./createUtils": {
++      "import": "./dist/vanilla-extract-sprinkles-createUtils.esm.js",
++      "default": "./dist/vanilla-extract-sprinkles-createUtils.cjs.js"
++    },
+     "./package.json": "./package.json"
+   }
+ }
