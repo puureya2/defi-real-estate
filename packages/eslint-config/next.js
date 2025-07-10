@@ -38,12 +38,16 @@ export const nextJsConfig = [
   {
     plugins: {
       "react-hooks": pluginReactHooks,
+      "react-refresh": require("eslint-plugin-react-refresh"),
     },
     settings: { react: { version: "detect" } },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
-      // React scope no longer necessary with new JSX transform.
       "react/react-in-jsx-scope": "off",
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
     },
   },
 ];
